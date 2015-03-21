@@ -1,0 +1,34 @@
+ackage com.nolimitsframework.block;
+
+import nlvm.lang.String;
+
+public class TransferRequest extends Block {
+
+    private int lastState = 0;
+    private int currentState = 0;
+    private com.nolimitscoaster.Block nextNativeBlock = null;
+    private com.nolimitscoaster.SpecialTrack sSwitch = null;
+    private String switchName;
+	private bool backwardsentrance = false;
+	private bool backwardsexit = true;
+
+    private float elapsedTimeOnBlock = 0;
+
+    private int switchDirection = 0;
+    private bool backwardMode = false;
+
+	public TransferRequest(String _name, String _switchName, int startDirection, bool _backwardsentrance, int endDirection, bool _backwardsexit)
+
+    public bool initChild() {
+        sSwitch = mngr.coaster.getSpecialTrack(switchName);
+        if (sSwitch == null) {
+            System.err.println("SpecialTrack '" + name + "' not found");
+            return false;
+        }
+        return true;
+    }
+	
+	 private int getDirection() {
+        return switchDirection;
+    }
+}
