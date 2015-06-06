@@ -1,0 +1,12 @@
+package com.nolimitsframework.objects;
+
+import com.nolimitsframework.*;
+import com.nolimitsframework.block.*;
+
+public class TransferTrackManager implements Process, BlockObject {
+	protected Vector requests;
+	
+	public void AddRequest(BlockTransferRequest request){
+		requests.AddElement(request);
+	}
+}
