@@ -1,0 +1,19 @@
+package com.nolimitsframework.block;
+
+import nlvm.lang.String;
+
+public class BlockTransferRequest extends Block {
+
+	public bool entersforward;
+	public int entryindex;
+	public bool exitsforward;
+	public int exitindex;
+	
+	public BlockTransferRequest(String _name, bool _entrydir, int _entryindex, bool _exitdir, int _exitindex, TransferTrackManager _transfertrack)
+	{
+		name = _name;
+		entersforward = _entrydir; entryindex = _entryindex;
+		exitsforward = _exitdir; exitindex = _exitindex;
+		_transfertrack.addRequest(this, this.name, this.mngr);
+	}
+}

@@ -1,12 +1,39 @@
 package com.nolimitsframework.objects;
 
+import nlvm.lang.String;
+import nlvm.util.*;
 import com.nolimitsframework.*;
 import com.nolimitsframework.block.*;
 
 public class TransferTrackManager implements Process, BlockObject {
 	protected Vector requests;
 	
-	public void AddRequest(BlockTransferRequest request){
-		requests.AddElement(request);
+	public String name;
+	protected BlockManager mngr;
+	protected com.nolimitscoaster.Block nativeBlock;
+	
+	public void addRequest(BlockTransferRequest request, String _name, BlockManager _mngr){
+		if (requests == null) {
+			mngr = _mngr;
+			name = _name;
+			nativeBlock = mngr.coaster.getBlock(name);
+
+			if (nativeBlock == null) {
+				System.err.println("Block '" + name + "' not found");
+				return;
+			}
+            requests = new Vector();
+        }
+		if (name.Equals(_name)){
+			requests.addElement(request);
+		}
+		else {
+			System.err.println("Block '" + name + "' expected; block '" + "' given");
 	}
+	
+	public void stateChanged(int state, Block block){
+	
+	}
+	
+	public void proceed(float tick)
 }
